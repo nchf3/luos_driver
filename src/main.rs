@@ -6,11 +6,12 @@ use serial::prelude::*;
 
 fn main() {
 
+    // create json command
     let data_cmd = object!{detection:{}};
     let json_cmd = json::stringify(data_cmd);
 
     // open serial port
-    let mut port = serial::open("COM3").unwrap();
+    let mut port = serial::open("COM2").unwrap();
 
     // configure port
     port.reconfigure(&|settings| {
