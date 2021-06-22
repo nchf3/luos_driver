@@ -2,6 +2,7 @@ use json::object;
 
 use serial::prelude::*;
 use std::io::prelude::*;
+use std::str;
 
 fn main() {
     // create json command
@@ -28,4 +29,10 @@ fn main() {
     port.write(luos_json.as_bytes()).unwrap();
 
     // receive json response
+    let mut read_byte: [u8; 1] = [0];
+    for _bytes in 1..300 {
+        port.read_exact(&mut read_byte).unwrap();
+        let read_string = str::from_utf8(&read_byte).unwrap();
+        println!("{}", read_string);
+    }
 }
