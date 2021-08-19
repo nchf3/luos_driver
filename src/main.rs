@@ -20,7 +20,7 @@ fn receive_json(port: &mut serial::SystemPort) {
             json_flag = true;
         }
 
-        if read_string == '}' && saved_string == '{' {
+        if (saved_string, read_string) == ('{', '}') {
             // empty json
             // stop counting json
             json_flag = false;
