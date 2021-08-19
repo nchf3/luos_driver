@@ -36,7 +36,7 @@ fn receive_json(port: &mut serial::SystemPort) {
         }
 
         // shift read data
-        saved_string = read_string.clone();
+        saved_string = read_string;
     }
 }
 
