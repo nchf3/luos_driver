@@ -11,7 +11,7 @@ fn receive_json(port: &mut serial::SystemPort) {
     let mut saved_string: char = '0';
     let mut json_flag = false;
     let mut json_size = 0;
-    for _bytes in 1..400 {
+    loop {
         port.read_exact(&mut read_byte).unwrap();
         let read_string = read_byte[0] as char;
 
